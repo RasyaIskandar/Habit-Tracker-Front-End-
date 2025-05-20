@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# Frontend UMKM Web App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Frontend aplikasi UMKM berbasis React dan Vite. Terhubung dengan backend Laravel melalui API endpoint. Dibangun untuk memberikan antarmuka yang cepat, ringan, dan responsif bagi pengguna UMKM.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Teknologi yang Digunakan
 
-   ```bash
-   npm install
-   ```
+- [React.js](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Axios](https://axios-http.com/) - untuk request API
+- [Tailwind CSS](https://tailwindcss.com/) - untuk styling
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Langkah Install & Menjalankan Frontend
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### 1. Masuk ke Folder Frontend
 ```bash
-npm run reset-project
-```
+cd frontend
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+npm install
 
-## Learn more
+npm run dev
+http://localhost:5173
 
-To learn more about developing your project with Expo, look at the following resources:
+🌐 Koneksi ke Backend Laravel
+Pastikan backend Laravel sudah berjalan di http://127.0.0.1:8000.
+VITE_API_BASE_URL=http://127.0.0.1:8000/api
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+import axios from 'axios'
 
-## Join the community
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+})
 
-Join our community of developers creating universal apps.
+export default api
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+api.get('/products').then((res) => {
+  console.log(res.data)
+})
+
+frontend/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── api.js
+├── .env
+├── index.html
+├── package.json
+└── vite.config.js
+
+🖼️ Screenshot Tampilan Aplikasi
+Beranda
+
+Halaman Produk
+
+📄 Lisensi
+Project ini menggunakan lisensi MIT.
+Silakan digunakan dan dikembangkan sesuai kebutuhan.
+
+
+---
+
+### Catatan:
+- File `.env` di frontend digunakan untuk menyimpan URL API Laravel.
+- Gambar screenshot mengarah ke folder `../screenshots/`, yang sebaiknya berada di root project bersama folder `backend/` dan `frontend/`.
+- Jika kamu belum buat struktur komponen atau halaman, bisa aku bantu scaffold juga.
+
+Perlu versi bahasa Inggris? Atau mau aku bantu generate struktur file React lengkap juga?
+
+Cek atau buat file .env di folder frontend (kalau belum ada), lalu tambahkan:
